@@ -8,9 +8,9 @@ const HomeContact = () => {
             <h3 className='text-center text-xl text-secondary'>Contact Us</h3>
             <h2 className='text-3xl text-white text-center'>Stay connected with us</h2>
             <div className='mt-8 flex flex-col justify-center items-center gap-5'>
-                <input type="text" placeholder="Type here" className="input input-sm w-full max-w-xs" />
-                <input type="text" placeholder="Type here" className="input input-sm w-full max-w-xs" />
-                <textarea className="textarea w-full max-w-xs" placeholder="Bio"></textarea>
+                <input type="text" placeholder="Email Address" className="input input-sm w-full max-w-xs" />
+                <input type="text" placeholder="Subject" className="input input-sm w-full max-w-xs" />
+                <textarea className="textarea w-full max-w-xs" placeholder="Your Message"></textarea>
                 <button className="text-white font-bold bg-gradient-to-r from-primary to-secondary px-8 py-1 rounded">Submit</button>
 
             </div>
