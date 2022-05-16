@@ -1,5 +1,7 @@
-import React from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useForm } from "react-hook-form";
 
@@ -8,6 +10,10 @@ import auth from '../../../firebase.init';
 import Loading from '../../Home/Shared/Loading';
 
 const SignUp = () => {
+
+    const [sendEmailVerification, sending, vError] = useSendEmailVerification(
+        auth
+    );
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
@@ -24,10 +30,10 @@ const SignUp = () => {
 
 
     let signInError;
-    if (error || gerror || updateerror) {
-        signInError = <p className='text-red-500'>{error?.message || gerror?.message || updateerror.message}</p>
+    if (error || gerror || updateerror || vError) {
+        signInError = <p className='text-red-500'>{error?.message || gerror?.message || updateerror.message || vError.message}</p>
     }
-    if (loading || gloading || updating) {
+    if (loading || gloading || updating || sending) {
         return <Loading></Loading>
     }
 
@@ -39,8 +45,9 @@ const SignUp = () => {
         console.log(data);
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
-        alert('Updated profile');
-        navigate('/appointment')
+        await sendEmailVerification();
+        alert('Profile created & a verification email sent');
+        navigate('/')
     }
 
     return (
@@ -116,7 +123,7 @@ const SignUp = () => {
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-block btn-outline btn-secondary">Continue with Google</button>
-
+                    <ToastContainer />
                 </div>
             </div>
         </div>

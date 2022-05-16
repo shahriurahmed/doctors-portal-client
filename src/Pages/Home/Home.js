@@ -6,6 +6,8 @@ import Info from './Info';
 import MakeAppointment from './MakeAppointment';
 import Services from './Services';
 import Testimonials from './Testimonials';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
     return (
@@ -18,6 +20,7 @@ const Home = () => {
             <MakeAppointment></MakeAppointment>
             <Testimonials></Testimonials>
             <HomeContact></HomeContact>
+            <ToastContainer />
         </div>
     );
 };

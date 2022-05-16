@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useEffect, useState } from 'react';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Home/Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ResetModal from './ResetModal';
 import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -123,7 +125,7 @@ const Login = () => {
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-block btn-outline btn-secondary">Continue with Google</button>
-
+                    <ToastContainer />
                 </div>
             </div>
 
