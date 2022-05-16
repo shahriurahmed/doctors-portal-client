@@ -46,7 +46,7 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name });
         await sendEmailVerification();
-        alert('Profile created & a verification email sent');
+        toast('Profile created & a verification email sent');
         navigate('/')
     }
 
@@ -123,7 +123,7 @@ const SignUp = () => {
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-block btn-outline btn-secondary">Continue with Google</button>
-                    <ToastContainer />
+
                 </div>
             </div>
         </div>

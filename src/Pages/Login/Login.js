@@ -125,7 +125,7 @@ const Login = () => {
                     <button
                         onClick={() => signInWithGoogle()}
                         className="btn btn-block btn-outline btn-secondary">Continue with Google</button>
-                    <ToastContainer />
+
                 </div>
             </div>
 

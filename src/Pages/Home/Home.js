@@ -20,7 +20,7 @@ const Home = () => {
             <MakeAppointment></MakeAppointment>
             <Testimonials></Testimonials>
             <HomeContact></HomeContact>
-            <ToastContainer />
+
         </div>
     );
 };
