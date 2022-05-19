@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Home/Shared/Loading';
+import useToken from '../../../hooks/useToken';
 
 const SignUp = () => {
 
@@ -28,6 +29,7 @@ const SignUp = () => {
 
     const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
 
+    const [token] = useToken(user || guser)
 
     let signInError;
     if (error || gerror || updateerror || vError) {

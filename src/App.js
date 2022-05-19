@@ -48,4 +48,11 @@ function App() {
   );
 }
 
+// REACT_APP_APIKEY=AIzaSyAh4naQk0Ad6gt2J-JhbQs3NDx0Nqc35a4
+// REACT_APP_AUTHDOMAIN=doctors-portal-84e4d.firebaseapp.com
+// REACT_APP_PROJECTID=doctors-portal-84e4d
+// REACT_APP_STORAGEBUCKET=doctors-portal-84e4d.appspot.com
+// REACT_APP_MESSAGINGSENDERID=740619857730
+// REACT_APP_APPID=1:740619857730:web:8ed4dfb9e09fbba98a62db
+
 export default App;
