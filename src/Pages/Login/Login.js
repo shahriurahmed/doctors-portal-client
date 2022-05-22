@@ -5,13 +5,16 @@ import { useForm } from "react-hook-form";
 import Loading from '../Home/Shared/Loading';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ResetModal from './ResetModal';
-import { ToastContainer } from 'react-toastify';
+
 
 import 'react-toastify/dist/ReactToastify.css';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+
+
+    const [signInWithGoogle, gUser, gloading, gerror] = useSignInWithGoogle(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -19,6 +22,8 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+    const [token] = useToken(user || gUser)
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -33,21 +38,12 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-
-
-
-    const [modal, setModal] = useState(false);
-    const updateModal = () => {
-        setModal(true);
-    }
-
-
     useEffect(() => {
-        if (user || guser) {
+        if (token) {
             navigate(from, { replace: true });
 
         }
-    }, [user, guser, from, navigate])
+    }, [user, gUser, from, navigate, token])
 
 
     if (error || gerror) {

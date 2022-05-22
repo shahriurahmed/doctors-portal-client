@@ -15,7 +15,7 @@ const SignUp = () => {
     const [sendEmailVerification, sending, vError] = useSendEmailVerification(
         auth
     );
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gloading, gerror] = useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -29,7 +29,7 @@ const SignUp = () => {
 
     const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
 
-    const [token] = useToken(user || guser)
+    const [token] = useToken(user || gUser);
 
     let signInError;
     if (error || gerror || updateerror || vError) {
@@ -39,8 +39,8 @@ const SignUp = () => {
         return <Loading></Loading>
     }
 
-    if (user || guser) {
-        console.log(user || guser);
+    if (token) {
+        navigate('/');
     }
 
     const onSubmit = async data => {
@@ -49,7 +49,7 @@ const SignUp = () => {
         await updateProfile({ displayName: data.name });
         await sendEmailVerification();
         toast('Profile created & a verification email sent');
-        navigate('/')
+
     }
 
     return (
