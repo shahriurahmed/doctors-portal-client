@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Home/Shared/Loading';
+import DeleteConfirmModal from './DeleteConfirmModal';
 import DocotrRow from './DocotrRow';
 
 const ManageDoctors = () => {
 
+    const [dDoctor, setDdocotor] = useState(null);
     const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctor', {
         headers: {
             authorization: `Barer ${localStorage.getItem('accessToken')}`
@@ -12,12 +14,12 @@ const ManageDoctors = () => {
     }).then(res => res.json()));
 
     if (isLoading) {
-        <Loading></Loading>
+        return <Loading></Loading>
     }
 
     return (
         <div className='px-10'>
-            <h2 className="text-2xl">Manage Doctors: {doctors.length}</h2>
+            <h2 className="text-2xl">Manage Doctors</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 
@@ -35,12 +37,17 @@ const ManageDoctors = () => {
                             doctors.map((doctor, index) => <DocotrRow key={doctor._id}
                                 doctor={doctor}
                                 index={index}
-                                refetch={refetch}></DocotrRow>)
+                                refetch={refetch}
+                                setDdocotor={setDdocotor}></DocotrRow>)
                         }
 
                     </tbody>
                 </table>
             </div>
+            {dDoctor && <DeleteConfirmModal
+                dDoctor={dDoctor}
+                refetch={refetch}
+                setDdocotor={setDdocotor}></DeleteConfirmModal>}
         </div>
     );
 };

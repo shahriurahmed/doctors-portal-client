@@ -12,7 +12,7 @@ const AddDoctor = () => {
 
     const imageStorageKey = '869789c7de8f6363e7dd47fde61f22e8';
     if (isLoading) {
-        <Loading></Loading>
+        return <Loading></Loading>
     }
 
     const onSubmit = async data => {
