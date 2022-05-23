@@ -111,7 +111,7 @@ const Login = () => {
                         <input className='btn btn-block' value="Login" type="submit" />
                     </form>
                     <p><small>New to Doctors Portal? <Link className='text-secondary' to="/signup">Create New Account</Link></small></p>
-                    <p ><small>Forget Password? <label htmlFor="reset-modal" class=" text-secondary cursor-pointer">Reset Password</label></small></p>
+                    <p ><small>Forget Password? <label htmlFor="reset-modal" className=" text-secondary cursor-pointer">Reset Password</label></small></p>
 
                     {
                         <ResetModal ></ResetModal>

@@ -33,8 +33,8 @@ const MyAppointments = () => {
     return (
         <div className='px-10'>
             <h2 className='text-center text-xl  pb-5'>My Appointments</h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
 
                     <thead>
                         <tr>
@@ -50,7 +50,7 @@ const MyAppointments = () => {
                     <tbody>
 
                         {
-                            appointments.map(a => <tr>
+                            appointments.map(a => <tr key={a._id}>
                                 <th>{appointments.indexOf(a) + 1}</th>
                                 <td>{a.patientName}</td>
                                 <td>{a.date}</td>
